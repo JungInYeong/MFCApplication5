@@ -138,7 +138,7 @@ BOOL CMFCApplication5Dlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
-
+	srand(static_cast<unsigned int>(time(nullptr)));
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -230,7 +230,7 @@ vector<int> RemoveArr(int idx) {
 void CMFCApplication5Dlg::OnClickedButton1() {
 	vector<int> indices = { IDB_BITMAP1, IDB_BITMAP2, IDB_BITMAP3, IDB_BITMAP4, IDB_BITMAP5, IDB_BITMAP6 };
 
-	//random_shuffle(indices.begin(), indices.end());
+	random_shuffle(indices.begin(), indices.end());
 
 	HINSTANCE hInstance = GetModuleHandle(nullptr);
 
@@ -245,22 +245,23 @@ void CMFCApplication5Dlg::OnClickedButton1() {
 			PostMessage(WM_USER + 1, j, reinterpret_cast<LPARAM>(hBitmap));
 			CString scoreStr;
 			scoreStr.Format(_T("%d"), indices[i]);
-		switch(j) {
-		case 0:
-			m_score1.SetWindowText(scoreStr);
+			switch(j)
+			{
+				case 0:
+					m_score1.SetWindowText(scoreStr);
 
-		case 1:
-			m_score2.SetWindowText(scoreStr);
+				case 1:
+					m_score2.SetWindowText(scoreStr);
 
-		case 2:
-			m_score3.SetWindowText(scoreStr);
+				case 2:
+					m_score3.SetWindowText(scoreStr);
 
-		case 3:
-			m_score4.SetWindowText(scoreStr);
+				case 3:
+					m_score4.SetWindowText(scoreStr);
 
-		case 4:
-			m_score5.SetWindowText(scoreStr);
-
+				case 4:
+					m_score5.SetWindowText(scoreStr);
+				
 		}	
 			
 		}
