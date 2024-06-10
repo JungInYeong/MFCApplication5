@@ -9,6 +9,7 @@
 #include "afxdialogex.h"
 #include <Windows.h>
 #include <iostream>
+#include <string>
 #include <array>
 #include <vector>
 #include <algorithm>
@@ -18,6 +19,12 @@ using namespace std;
 #define new DEBUG_NEW
 #endif
 
+bool arr[5] = { 1,1,1,1,1 };
+//bool dice1;
+//bool dice2;
+//bool dice3;
+//bool dice4;
+//bool dice5;
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
@@ -58,6 +65,7 @@ END_MESSAGE_MAP()
 
 CMFCApplication5Dlg::CMFCApplication5Dlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_MFCAPPLICATION5_DIALOG, pParent)
+	//, m_score1(0)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -70,6 +78,13 @@ void CMFCApplication5Dlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_BUTTON4, m_dice3);
 	DDX_Control(pDX, IDC_BUTTON5, m_dice4);
 	DDX_Control(pDX, IDC_BUTTON6, m_dice5);
+	//DDX_Control(pDX, IDC_BUTTON7, m_score1);
+	DDX_Control(pDX, IDC_BUTTON15, m_showScore);
+	DDX_Control(pDX, IDC_BUTTON7, m_score1);
+	DDX_Control(pDX, IDC_BUTTON8, m_score2);
+	DDX_Control(pDX, IDC_BUTTON9, m_score3);
+	DDX_Control(pDX, IDC_BUTTON10, m_score4);
+	DDX_Control(pDX, IDC_BUTTON11, m_score5);
 }
 
 BEGIN_MESSAGE_MAP(CMFCApplication5Dlg, CDialogEx)
@@ -84,6 +99,10 @@ BEGIN_MESSAGE_MAP(CMFCApplication5Dlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON5, &CMFCApplication5Dlg::OnBnClickedButton5)
 	ON_BN_CLICKED(IDC_BUTTON6, &CMFCApplication5Dlg::OnBnClickedButton6)
 	ON_BN_CLICKED(IDC_BUTTON7, &CMFCApplication5Dlg::OnBnClickedButton7)
+	ON_BN_CLICKED(IDC_BUTTON8, &CMFCApplication5Dlg::OnBnClickedButton8)
+	ON_BN_CLICKED(IDC_BUTTON9, &CMFCApplication5Dlg::OnBnClickedButton9)
+	ON_BN_CLICKED(IDC_BUTTON10, &CMFCApplication5Dlg::OnBnClickedButton10)
+	ON_BN_CLICKED(IDC_BUTTON11, &CMFCApplication5Dlg::OnBnClickedButton11)
 END_MESSAGE_MAP()
 
 
@@ -185,10 +204,33 @@ vector<int> RemoveArr(int idx) {
 	return vec;
 }
 
+//void CMFCApplication5Dlg::OnClickedButton1() {
+//	vector<int> indices = { IDB_BITMAP1, IDB_BITMAP2, IDB_BITMAP3, IDB_BITMAP4, IDB_BITMAP5, IDB_BITMAP6 };
+//
+//	//random_shuffle(indices.begin(), indices.end());
+//
+//	HINSTANCE hInstance = GetModuleHandle(nullptr);
+//
+//	for (int j = 0; j < 5; ++j) {
+//		int i = rand() % 6;
+//		HBITMAP hBitmap = LoadBitmapFromResource(hInstance, indices[i]);
+//		if (hBitmap == nullptr) {
+//			AfxMessageBox(_T("Failed to load bitmap!"));
+//			return;
+//		}
+//		if (arr[j] == 1) {
+//			PostMessage(WM_USER + 1, j, reinterpret_cast<LPARAM>(hBitmap));
+//			CString scoreStr;
+//			scoreStr.Format(_T("%d"), indices[i]);
+//			m_score1.SetWindowText(scoreStr);
+//		}
+//	}
+//	
+//}
 void CMFCApplication5Dlg::OnClickedButton1() {
 	vector<int> indices = { IDB_BITMAP1, IDB_BITMAP2, IDB_BITMAP3, IDB_BITMAP4, IDB_BITMAP5, IDB_BITMAP6 };
 
-	random_shuffle(indices.begin(), indices.end());
+	//random_shuffle(indices.begin(), indices.end());
 
 	HINSTANCE hInstance = GetModuleHandle(nullptr);
 
@@ -199,10 +241,33 @@ void CMFCApplication5Dlg::OnClickedButton1() {
 			AfxMessageBox(_T("Failed to load bitmap!"));
 			return;
 		}
-		PostMessage(WM_USER + 1, j, reinterpret_cast<LPARAM>(hBitmap));
-	}
-}
+		if (arr[j] == 1) {
+			PostMessage(WM_USER + 1, j, reinterpret_cast<LPARAM>(hBitmap));
+			CString scoreStr;
+			scoreStr.Format(_T("%d"), indices[i]);
+		switch(j) {
+		case 0:
+			m_score1.SetWindowText(scoreStr);
 
+		case 1:
+			m_score2.SetWindowText(scoreStr);
+
+		case 2:
+			m_score3.SetWindowText(scoreStr);
+
+		case 3:
+			m_score4.SetWindowText(scoreStr);
+
+		case 4:
+			m_score5.SetWindowText(scoreStr);
+
+		}	
+			
+		}
+		
+	}
+
+}
 void AdjustButtonToBitmap(CButton& button, HBITMAP hBitmap) 
 {
 	BITMAP bm;
@@ -255,6 +320,7 @@ void CMFCApplication5Dlg::OnBnClickedButton2()
 
 	// 버튼 2에 있는 이미지를 삭제합니다.
 	pButton2->SetBitmap(nullptr);
+	arr[0] = false;
 
 }
 	
@@ -262,22 +328,65 @@ void CMFCApplication5Dlg::OnBnClickedButton2()
 
 void CMFCApplication5Dlg::OnBnClickedButton3()
 {
+	// 버튼 2에서 이미지를 추출합니다.
+	CButton* pButton3 = (CButton*)GetDlgItem(IDC_BUTTON3);
+	HBITMAP hBitmap = (HBITMAP)pButton3->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
+
+	// 버튼 7에 이미지를 설정합니다.
+	CButton* pButton8 = (CButton*)GetDlgItem(IDC_BUTTON8);
+	pButton8->SetBitmap(hBitmap);
+
+	// 버튼 2에 있는 이미지를 삭제합니다.
+	pButton3->SetBitmap(nullptr);
+	arr[1] = false;
 }
 
 
 void CMFCApplication5Dlg::OnBnClickedButton4()
 {
+	// 버튼 2에서 이미지를 추출합니다.
+	CButton* pButton4 = (CButton*)GetDlgItem(IDC_BUTTON4);
+	HBITMAP hBitmap = (HBITMAP)pButton4->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
+
+	// 버튼 7에 이미지를 설정합니다.
+	CButton* pButton9 = (CButton*)GetDlgItem(IDC_BUTTON9);
+	pButton9->SetBitmap(hBitmap);
+
+	// 버튼 2에 있는 이미지를 삭제합니다.
+	pButton4->SetBitmap(nullptr);
+	arr[2] = false;
 }
 
 
 void CMFCApplication5Dlg::OnBnClickedButton5()
 {
+	// 버튼 2에서 이미지를 추출합니다.
+	CButton* pButton5 = (CButton*)GetDlgItem(IDC_BUTTON5);
+	HBITMAP hBitmap = (HBITMAP)pButton5->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
 
+	// 버튼 7에 이미지를 설정합니다.
+	CButton* pButton10 = (CButton*)GetDlgItem(IDC_BUTTON10);
+	pButton10->SetBitmap(hBitmap);
+
+	// 버튼 2에 있는 이미지를 삭제합니다.
+	pButton5->SetBitmap(nullptr);
+	arr[3] = false;
 }
 
 
 void CMFCApplication5Dlg::OnBnClickedButton6()
 {
+	// 버튼 2에서 이미지를 추출합니다.
+	CButton* pButton6 = (CButton*)GetDlgItem(IDC_BUTTON6);
+	HBITMAP hBitmap = (HBITMAP)pButton6->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
+
+	// 버튼 7에 이미지를 설정합니다.
+	CButton* pButton11 = (CButton*)GetDlgItem(IDC_BUTTON11);
+	pButton11->SetBitmap(hBitmap);
+
+	// 버튼 2에 있는 이미지를 삭제합니다.
+	pButton6->SetBitmap(nullptr);
+	arr[4] = false;
 }
 
 
@@ -294,5 +403,104 @@ void CMFCApplication5Dlg::OnBnClickedButton7()
 
 	// 버튼 7에 있는 이미지를 삭제합니다.
 	pButton7->SetBitmap(nullptr);
+	arr[0] = true;
 	
+	CString str;
+	pButton7->GetWindowText(str);
+	m_showScore.SetWindowText(str);
+	//CString str;
+	//GetDlgItemText(IDC_BUTTON7, str);
+	//m_showScore.SetWindowText(str);
+
+}
+
+
+void CMFCApplication5Dlg::OnBnClickedButton8()
+{
+	// 버튼 7에서 이미지를 추출합니다.
+	CButton* pButton8 = (CButton*)GetDlgItem(IDC_BUTTON8);
+	HBITMAP hBitmap = (HBITMAP)pButton8->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
+
+	// 버튼 2에 이미지를 설정합니다.
+	CButton* pButton3 = (CButton*)GetDlgItem(IDC_BUTTON3);
+	pButton3->SetBitmap(hBitmap);
+
+	// 버튼 7에 있는 이미지를 삭제합니다.
+	pButton8->SetBitmap(nullptr);
+	arr[1] = true;
+
+	CString str;
+	pButton8->GetWindowText(str);
+	m_showScore.SetWindowText(str);
+	//CString str;
+	//GetDlgItemText(IDC_BUTTON7, str);
+	//m_showScore.SetWindowText(str);
+}
+
+
+void CMFCApplication5Dlg::OnBnClickedButton9()
+{
+	// 버튼 7에서 이미지를 추출합니다.
+	CButton* pButton9 = (CButton*)GetDlgItem(IDC_BUTTON9);
+	HBITMAP hBitmap = (HBITMAP)pButton9->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
+
+	// 버튼 2에 이미지를 설정합니다.
+	CButton* pButton4 = (CButton*)GetDlgItem(IDC_BUTTON4);
+	pButton4->SetBitmap(hBitmap);
+
+	// 버튼 7에 있는 이미지를 삭제합니다.
+	pButton9->SetBitmap(nullptr);
+	arr[2] = true;
+
+	CString str;
+	pButton9->GetWindowText(str);
+	m_showScore.SetWindowText(str);
+	//CString str;
+	//GetDlgItemText(IDC_BUTTON7, str);
+	//m_showScore.SetWindowText(str);
+}
+
+
+void CMFCApplication5Dlg::OnBnClickedButton10()
+{
+	// 버튼 7에서 이미지를 추출합니다.
+	CButton* pButton10 = (CButton*)GetDlgItem(IDC_BUTTON10);
+	HBITMAP hBitmap = (HBITMAP)pButton10->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
+
+	// 버튼 2에 이미지를 설정합니다.
+	CButton* pButton5 = (CButton*)GetDlgItem(IDC_BUTTON5);
+	pButton5->SetBitmap(hBitmap);
+
+	// 버튼 7에 있는 이미지를 삭제합니다.
+	pButton10->SetBitmap(nullptr);
+	arr[3] = true;
+
+	CString str;
+	pButton10->GetWindowText(str);
+	m_showScore.SetWindowText(str);
+	//CString str;
+	//GetDlgItemText(IDC_BUTTON7, str);
+	//m_showScore.SetWindowText(str);}
+}
+
+void CMFCApplication5Dlg::OnBnClickedButton11()
+{
+	// 버튼 7에서 이미지를 추출합니다.
+	CButton* pButton11 = (CButton*)GetDlgItem(IDC_BUTTON11);
+	HBITMAP hBitmap = (HBITMAP)pButton11->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
+
+	// 버튼 2에 이미지를 설정합니다.
+	CButton* pButton6 = (CButton*)GetDlgItem(IDC_BUTTON6);
+	pButton6->SetBitmap(hBitmap);
+
+	// 버튼 7에 있는 이미지를 삭제합니다.
+	pButton11->SetBitmap(nullptr);
+	arr[4] = true;
+
+	CString str;
+	pButton11->GetWindowText(str);
+	m_showScore.SetWindowText(str);
+	//CString str;
+	//GetDlgItemText(IDC_BUTTON7, str);
+	//m_showScore.SetWindowText(str);}
 }

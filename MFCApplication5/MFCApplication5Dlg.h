@@ -47,4 +47,16 @@ public:
 	afx_msg void OnBnClickedButton6();
 
 	afx_msg void OnBnClickedButton7();
+	//int m_score1;
+//	CButton m_showScore;
+	CButton m_showScore;
+	CButton m_score1;
+	afx_msg void OnBnClickedButton8();
+	afx_msg void OnBnClickedButton9();
+	afx_msg void OnBnClickedButton10();
+	afx_msg void OnBnClickedButton11();
+	CButton m_score2;
+	CButton m_score3;
+	CButton m_score4;
+	CButton m_score5;
 };
