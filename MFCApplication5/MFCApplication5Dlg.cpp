@@ -328,15 +328,15 @@ void CMFCApplication5Dlg::OnBnClickedButton2()
 
 void CMFCApplication5Dlg::OnBnClickedButton3()
 {
-	// 버튼 2에서 이미지를 추출합니다.
+	// 버튼 3에서 이미지를 추출합니다.
 	CButton* pButton3 = (CButton*)GetDlgItem(IDC_BUTTON3);
 	HBITMAP hBitmap = (HBITMAP)pButton3->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
 
-	// 버튼 7에 이미지를 설정합니다.
+	// 버튼 8에 이미지를 설정합니다.
 	CButton* pButton8 = (CButton*)GetDlgItem(IDC_BUTTON8);
 	pButton8->SetBitmap(hBitmap);
 
-	// 버튼 2에 있는 이미지를 삭제합니다.
+	// 버튼 3에 있는 이미지를 삭제합니다.
 	pButton3->SetBitmap(nullptr);
 	arr[1] = false;
 }
@@ -344,15 +344,15 @@ void CMFCApplication5Dlg::OnBnClickedButton3()
 
 void CMFCApplication5Dlg::OnBnClickedButton4()
 {
-	// 버튼 2에서 이미지를 추출합니다.
+	// 버튼 4에서 이미지를 추출합니다.
 	CButton* pButton4 = (CButton*)GetDlgItem(IDC_BUTTON4);
 	HBITMAP hBitmap = (HBITMAP)pButton4->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
 
-	// 버튼 7에 이미지를 설정합니다.
+	// 버튼 9에 이미지를 설정합니다.
 	CButton* pButton9 = (CButton*)GetDlgItem(IDC_BUTTON9);
 	pButton9->SetBitmap(hBitmap);
 
-	// 버튼 2에 있는 이미지를 삭제합니다.
+	// 버튼 4에 있는 이미지를 삭제합니다.
 	pButton4->SetBitmap(nullptr);
 	arr[2] = false;
 }
@@ -360,15 +360,15 @@ void CMFCApplication5Dlg::OnBnClickedButton4()
 
 void CMFCApplication5Dlg::OnBnClickedButton5()
 {
-	// 버튼 2에서 이미지를 추출합니다.
+	// 버튼 5에서 이미지를 추출합니다.
 	CButton* pButton5 = (CButton*)GetDlgItem(IDC_BUTTON5);
 	HBITMAP hBitmap = (HBITMAP)pButton5->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
 
-	// 버튼 7에 이미지를 설정합니다.
+	// 버튼 10에 이미지를 설정합니다.
 	CButton* pButton10 = (CButton*)GetDlgItem(IDC_BUTTON10);
 	pButton10->SetBitmap(hBitmap);
 
-	// 버튼 2에 있는 이미지를 삭제합니다.
+	// 버튼 5에 있는 이미지를 삭제합니다.
 	pButton5->SetBitmap(nullptr);
 	arr[3] = false;
 }
@@ -376,15 +376,15 @@ void CMFCApplication5Dlg::OnBnClickedButton5()
 
 void CMFCApplication5Dlg::OnBnClickedButton6()
 {
-	// 버튼 2에서 이미지를 추출합니다.
+	// 버튼 6에서 이미지를 추출합니다.
 	CButton* pButton6 = (CButton*)GetDlgItem(IDC_BUTTON6);
 	HBITMAP hBitmap = (HBITMAP)pButton6->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
 
-	// 버튼 7에 이미지를 설정합니다.
+	// 버튼 11에 이미지를 설정합니다.
 	CButton* pButton11 = (CButton*)GetDlgItem(IDC_BUTTON11);
 	pButton11->SetBitmap(hBitmap);
 
-	// 버튼 2에 있는 이미지를 삭제합니다.
+	// 버튼 6에 있는 이미지를 삭제합니다.
 	pButton6->SetBitmap(nullptr);
 	arr[4] = false;
 }
@@ -417,15 +417,15 @@ void CMFCApplication5Dlg::OnBnClickedButton7()
 
 void CMFCApplication5Dlg::OnBnClickedButton8()
 {
-	// 버튼 7에서 이미지를 추출합니다.
+	// 버튼 8에서 이미지를 추출합니다.
 	CButton* pButton8 = (CButton*)GetDlgItem(IDC_BUTTON8);
 	HBITMAP hBitmap = (HBITMAP)pButton8->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
 
-	// 버튼 2에 이미지를 설정합니다.
+	// 버튼 3에 이미지를 설정합니다.
 	CButton* pButton3 = (CButton*)GetDlgItem(IDC_BUTTON3);
 	pButton3->SetBitmap(hBitmap);
 
-	// 버튼 7에 있는 이미지를 삭제합니다.
+	// 버튼 8에 있는 이미지를 삭제합니다.
 	pButton8->SetBitmap(nullptr);
 	arr[1] = true;
 
@@ -440,15 +440,15 @@ void CMFCApplication5Dlg::OnBnClickedButton8()
 
 void CMFCApplication5Dlg::OnBnClickedButton9()
 {
-	// 버튼 7에서 이미지를 추출합니다.
+	// 버튼 9에서 이미지를 추출합니다.
 	CButton* pButton9 = (CButton*)GetDlgItem(IDC_BUTTON9);
 	HBITMAP hBitmap = (HBITMAP)pButton9->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
 
-	// 버튼 2에 이미지를 설정합니다.
+	// 버튼 4에 이미지를 설정합니다.
 	CButton* pButton4 = (CButton*)GetDlgItem(IDC_BUTTON4);
 	pButton4->SetBitmap(hBitmap);
 
-	// 버튼 7에 있는 이미지를 삭제합니다.
+	// 버튼 9에 있는 이미지를 삭제합니다.
 	pButton9->SetBitmap(nullptr);
 	arr[2] = true;
 
@@ -463,15 +463,15 @@ void CMFCApplication5Dlg::OnBnClickedButton9()
 
 void CMFCApplication5Dlg::OnBnClickedButton10()
 {
-	// 버튼 7에서 이미지를 추출합니다.
+	// 버튼 10에서 이미지를 추출합니다.
 	CButton* pButton10 = (CButton*)GetDlgItem(IDC_BUTTON10);
 	HBITMAP hBitmap = (HBITMAP)pButton10->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
 
-	// 버튼 2에 이미지를 설정합니다.
+	// 버튼 5에 이미지를 설정합니다.
 	CButton* pButton5 = (CButton*)GetDlgItem(IDC_BUTTON5);
 	pButton5->SetBitmap(hBitmap);
 
-	// 버튼 7에 있는 이미지를 삭제합니다.
+	// 버튼 10에 있는 이미지를 삭제합니다.
 	pButton10->SetBitmap(nullptr);
 	arr[3] = true;
 
@@ -485,15 +485,15 @@ void CMFCApplication5Dlg::OnBnClickedButton10()
 
 void CMFCApplication5Dlg::OnBnClickedButton11()
 {
-	// 버튼 7에서 이미지를 추출합니다.
+	// 버튼 11에서 이미지를 추출합니다.
 	CButton* pButton11 = (CButton*)GetDlgItem(IDC_BUTTON11);
 	HBITMAP hBitmap = (HBITMAP)pButton11->SendMessage(BM_GETIMAGE, IMAGE_BITMAP, 0);
 
-	// 버튼 2에 이미지를 설정합니다.
+	// 버튼 6에 이미지를 설정합니다.
 	CButton* pButton6 = (CButton*)GetDlgItem(IDC_BUTTON6);
 	pButton6->SetBitmap(hBitmap);
 
-	// 버튼 7에 있는 이미지를 삭제합니다.
+	// 버튼 11에 있는 이미지를 삭제합니다.
 	pButton11->SetBitmap(nullptr);
 	arr[4] = true;
 
